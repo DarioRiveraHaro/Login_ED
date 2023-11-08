@@ -123,11 +123,27 @@ def registrar():
     if usuario in ["".join(matriz_user[i]).strip() for i in range(ultimo_indice + 1)]:
         print("El usuario ya existe. Intente con un nombre de usuario diferente.")
         time.sleep(1)
-        return
-    if len(usuario) > 10:
+        limpiar_pantalla()
+        registrar()
+
+    elif len(usuario) > 10:
         print("Usuario muy largo\n")
         time.sleep(1)
-        return
+        registrar()
+    
+    elif len(usuario) == 0:
+        print("El usuario no puede estar vacío\n")
+        limpiar_pantalla()
+        time.sleep(1)
+    elif not usuario.isdigit() and not usuario.isalpha():
+        print("El usuario solo puede contener letras y números\n")
+        time.sleep(1)
+        limpiar_pantalla()
+        registrar()
+
+    else:
+        print("Usuario válido")
+        limpiar_pantalla()
 
     # Solicitar contraseña
     contraseña = input("Ingrese su contraseña (obligatoriamente 8 caracteres, una mayúscula, un símbolo y al menos un número): ")
@@ -147,11 +163,11 @@ def registrar():
 
     for j, caracter in enumerate(contraseña):
         matriz_pass[ultimo_indice][j] = caracter
-
+    limpiar_pantalla()
     print("Preguntas de seguridad")
     respuesta_numero = input("¿Cuál es tu número favorito?: ")
     if not respuesta_numero.isdigit():
-        print("La respuesta debe ser un número")
+        print("La respuesta debe ser un número y no puede estar separado por espacios.")
         time.sleep(1)
         # Revertir el incremento del índice
         ultimo_indice -= 1
