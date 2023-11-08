@@ -210,6 +210,7 @@ def submenu():
         elif opcion == "3":
             limpiar_pantalla()
             eliminarusuario()
+
         elif opcion == "4":
             limpiar_pantalla()
             ordenamientos()
@@ -490,16 +491,13 @@ def insertSort():
     ordenamientos()
 
 # Función para ordenamiento por quick sort
-
 def partition(arr, low, high, movimientos, consultas):
-    i = (low-1)  # index of smaller element
+    i = (low-1) 
     pivot = arr[high]  # pivot
 
     for j in range(low, high):
         consultas += 1
-        # If current element is smaller than or equal to pivot
         if arr[j] <= pivot:
-            # increment index of smaller element
             i = i+1
             arr[i], arr[j] = arr[j], arr[i]
             movimientos += 1
@@ -508,15 +506,11 @@ def partition(arr, low, high, movimientos, consultas):
     movimientos += 1
     return (i+1, movimientos, consultas)
 
-
 def quick_sort(arr, low, high, iteraciones, movimientos, consultas):
     if len(arr) == 1:
         return arr
     if low < high:
-        # pi is partitioning index, arr[p] is now at right place
         pi, movimientos, consultas = partition(arr, low, high, movimientos, consultas)
-
-        # Separately sort elements before partition and after partition
         iteraciones += 1
         quick_sort(arr, low, pi-1, iteraciones, movimientos, consultas)
         quick_sort(arr, pi+1, high, iteraciones, movimientos, consultas)
@@ -844,7 +838,6 @@ def arboles():
         print("Opción inválida")
         time.sleep(1)
         return
-
 
 # Menu principal
 def main():
