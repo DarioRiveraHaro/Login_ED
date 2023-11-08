@@ -663,12 +663,18 @@ def ordenamientos():
 
 # Arbol binario.
 class Node:
+    # Constructor de la clase Node, el constructor es un metodo que se llama cuando un objeto es creado desde la clase
+    #  toma los argumentos de data y los asigna a la variable self.data que self es un argumento implicito que se pasa a los metodos y funciones.
     def __init__(self, data):
+        # Inicializa los atributos de la clase Node que son left, right y data, los inizialisa en None y data en el argumento data.
+        # self.left y self.right son punteros a otros nodos, tambien al declararlos en None se esta diciendo que no apuntan a nada al crearse.
         self.left = None
         self.right = None
         self.data = data
 
+    # Metodo para insertar un nuevo nodo con el valor data.
     def insert(self, data):
+        # Checa si el nodo actual tiene un valor asignado, si no, se le asigna el valor data.
         if self.data:
             if data < self.data:
                 if self.left is None:
